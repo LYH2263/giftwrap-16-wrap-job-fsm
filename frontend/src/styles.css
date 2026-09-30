@@ -452,6 +452,74 @@ button.ribbon:hover {
   font-size: 0.95rem;
 }
 
+/* —— work orders —— */
+.wo-status {
+  font-variant-numeric: tabular-nums;
+}
+
+.wo-status.st-draft {
+  background: rgba(58, 74, 99, 0.12);
+  color: var(--ink-soft);
+}
+
+.wo-status.st-quoted {
+  background: rgba(184, 151, 59, 0.16);
+  color: #8a6d22;
+}
+
+.wo-status.st-wrapping {
+  background: rgba(31, 92, 87, 0.14);
+  color: var(--wash-b);
+}
+
+.wo-status.st-done {
+  background: rgba(26, 122, 92, 0.12);
+  color: var(--ok);
+}
+
+.wo-status.st-cancelled {
+  background: rgba(180, 35, 24, 0.1);
+  color: var(--bad);
+}
+
+a.wo-ref {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a.wo-ref:hover {
+  text-decoration: underline;
+}
+
+.wo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.wo-card {
+  padding: 1.05rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(228, 239, 232, 0.6));
+}
+
+.wo-card.snapshot.frozen {
+  border-color: rgba(184, 151, 59, 0.5);
+  background: linear-gradient(135deg, rgba(255, 252, 245, 0.95), rgba(243, 234, 214, 0.7));
+}
+
+.wo-card h2 {
+  margin: 0 0 0.7rem;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
 /* —— unfold diagram —— */
 .unfold {
   margin-top: 1.1rem;

@@ -7,6 +7,23 @@ def init_db():
     CREATE TABLE IF NOT EXISTS papers(id INTEGER PRIMARY KEY,name TEXT,roll_width REAL,data_quality TEXT,note TEXT);
     CREATE TABLE IF NOT EXISTS settings(key TEXT PRIMARY KEY,value TEXT);
     CREATE TABLE IF NOT EXISTS calc_runs(id INTEGER PRIMARY KEY AUTOINCREMENT,box_id INT,overlap REAL,result_json TEXT,note TEXT,created_at TEXT);
+    CREATE TABLE IF NOT EXISTS work_orders(
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      code TEXT UNIQUE,
+      run_id INT,
+      status TEXT NOT NULL DEFAULT 'draft',
+      paper_m2 REAL,
+      ribbon_m REAL,
+      wrap_style TEXT,
+      box_surface REAL,
+      overlap REAL,
+      box_id INT,
+      box_name TEXT,
+      note TEXT,
+      quoted_at TEXT,
+      created_at TEXT,
+      updated_at TEXT
+    );
     """)
     if c.execute("SELECT COUNT(*) c FROM boxes").fetchone()["c"] == 0:
         c.executemany("INSERT INTO boxes(name,length,width,height,data_quality,note) VALUES (?,?,?,?,?,?)",[
