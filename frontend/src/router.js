@@ -7,6 +7,9 @@ import Bench from './pages/Bench.vue'
 import Ribbon from './pages/Ribbon.vue'
 import Overlap from './pages/Overlap.vue'
 import History from './pages/History.vue'
+import RunDetail from './pages/RunDetail.vue'
+import Orders from './pages/Orders.vue'
+import OrderDetail from './pages/OrderDetail.vue'
 import Settings from './pages/Settings.vue'
 export default createRouter({
   history: createWebHistory(),
@@ -19,6 +22,9 @@ export default createRouter({
     { path: '/ribbon', component: Ribbon },
     { path: '/overlap', component: Overlap },
     { path: '/history', component: History },
+    { path: '/history/:id', component: RunDetail, props: true },
+    { path: '/orders', component: Orders },
+    { path: '/orders/:id', component: OrderDetail, props: true },
     { path: '/settings', component: Settings },
   ],
 })

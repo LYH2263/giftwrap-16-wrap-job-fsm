@@ -22,8 +22,11 @@ onMounted(async () => {
     <p v-else-if="!items.length" class="empty">还没有写入过。先去算纸试一单。</p>
     <ul v-else class="item-list">
       <li v-for="r in items" :key="r.id">
-        <span>{{ r.box_name }}</span>
-        <span class="meta">{{ r.result?.paper_m2 ?? '—' }} m²</span>
+        <router-link :to="`/history/${r.id}`">{{ r.box_name }}</router-link>
+        <span class="meta">
+          <span v-if="r.order_count" class="pill st-quoted">工单×{{ r.order_count }}</span>
+          {{ r.result?.paper_m2 ?? '—' }} m²
+        </span>
       </li>
     </ul>
   </div>

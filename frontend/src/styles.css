@@ -296,6 +296,16 @@ select {
   color: var(--ink);
 }
 
+input {
+  min-width: 220px;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  font: inherit;
+}
+
 button,
 .btn {
   display: inline-flex;
@@ -445,6 +455,58 @@ button.ribbon:hover {
 .pill.warn {
   background: rgba(180, 35, 24, 0.1);
   color: var(--bad);
+}
+
+.pill.st-draft {
+  background: rgba(58, 74, 99, 0.12);
+  color: var(--ink-soft);
+}
+
+.pill.st-quoted {
+  background: rgba(184, 151, 59, 0.16);
+  color: var(--foil);
+}
+
+.pill.st-wrapping {
+  background: rgba(31, 92, 87, 0.14);
+  color: var(--wash-b);
+}
+
+.pill.st-done {
+  background: rgba(26, 122, 92, 0.12);
+  color: var(--ok);
+}
+
+.pill.st-cancelled {
+  background: rgba(180, 35, 24, 0.1);
+  color: var(--bad);
+}
+
+/* —— order detail panels —— */
+.panel {
+  margin-top: 1.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.panel h2 {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+}
+
+.panel .figure-line {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--wash-b);
+}
+
+.panel .figure-line span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink-soft);
 }
 
 .empty {

@@ -18,7 +18,9 @@ def list_runs(limit=50):
     c = connect()
     try:
         rows = c.execute(
-            """SELECT r.*, b.name box_name FROM calc_runs r LEFT JOIN boxes b ON b.id=r.box_id ORDER BY r.id DESC LIMIT ?""",
+            """SELECT r.*, b.name box_name,
+                      (SELECT COUNT(*) FROM work_orders w WHERE w.run_id=r.id) AS order_count
+               FROM calc_runs r LEFT JOIN boxes b ON b.id=r.box_id ORDER BY r.id DESC LIMIT ?""",
             (limit,),
         ).fetchall()
         out = []
@@ -27,5 +29,20 @@ def list_runs(limit=50):
             d["result"] = json.loads(d.pop("result_json"))
             out.append(d)
         return out
+    finally:
+        c.close()
+
+def get_run(rid):
+    c = connect()
+    try:
+        row = c.execute(
+            """SELECT r.*, b.name box_name FROM calc_runs r LEFT JOIN boxes b ON b.id=r.box_id WHERE r.id=?""",
+            (rid,),
+        ).fetchone()
+        if not row:
+            return None
+        d = dict(row)
+        d["result"] = json.loads(d.pop("result_json"))
+        return d
     finally:
         c.close()
